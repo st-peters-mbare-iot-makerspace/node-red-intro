@@ -1,0 +1,3 @@
+sensorMeasurement=JSON.parse(msg.payload);
+msg.payload={ temperature: 34};
+return msg;
