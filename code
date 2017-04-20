@@ -1,5 +1,10 @@
 Source: https://nodered.org/docs/writing-functions
 
-sensorMeasurement=JSON.parse(msg.payload);
-msg.payload={ temperature: 34};
+msg.payload = msg.payload.trim();//remove newline
+var values = msg.payload.split(",");//break comma-seperated sensor values into an array
+var sensorObject={};//create json object
+sensorObject["temperature"]=values[0];//array element 1 becomes object member 1
+sensorObject["water-level"]=values[1];//array element 2 becomes object member 2
+sensorObject["ph"]=values[2];//array element 3 becomes object member 3
+msg.payload=sensorObject;//return json object as payload
 return msg;
