@@ -1,6 +1,7 @@
 Source: https://nodered.org/docs/writing-functions
 https://www.mkyong.com/javascript/how-to-convert-javascript-array-to-json/
 
+/*Node red Function Node*/
 msg.payload = msg.payload.trim();//remove newline
 var values = msg.payload.split(",");//break comma-seperated sensor values into an array
 var sensorObject={};//create json object
@@ -9,3 +10,31 @@ sensorObject["water-level"]=values[1];//array element 2 becomes object member 2
 sensorObject["ph"]=values[2];//array element 3 becomes object member 3
 msg.payload=sensorObject;//return json object as payload
 return msg;
+
+
+/* Arduino Sketch */
+
+long waterlevel;
+long ph;
+long temperature;
+String values;
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(112500);
+  randomSeed(analogRead(0));
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  temperature=random(10,20);
+  waterlevel=random(21,30);
+  ph=random(31,40);
+  values=String(temperature)+","+String(waterlevel)+","+String(ph);
+  //Serial.println(temperature);
+  //Serial.println(waterlevel);
+  //Serial.println(ph);
+  Serial.println(values);
+  delay(3000);
+
+}
