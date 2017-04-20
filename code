@@ -31,9 +31,6 @@ void loop() {
   waterlevel=random(21,30);
   ph=random(31,40);
   values=String(temperature)+","+String(waterlevel)+","+String(ph);
-  //Serial.println(temperature);
-  //Serial.println(waterlevel);
-  //Serial.println(ph);
   Serial.println(values);
   delay(3000);
 
