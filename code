@@ -1,4 +1,5 @@
 Source: https://nodered.org/docs/writing-functions
+https://www.mkyong.com/javascript/how-to-convert-javascript-array-to-json/
 
 msg.payload = msg.payload.trim();//remove newline
 var values = msg.payload.split(",");//break comma-seperated sensor values into an array
